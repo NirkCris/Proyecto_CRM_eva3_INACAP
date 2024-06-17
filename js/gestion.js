@@ -30,10 +30,10 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch("http://144.126.210.74:8080/api/tipo_gestion", requestOptions)
+fetch("http://144.126.210.74:8080/api/gestion", requestOptions)
   .then((response) => {
     if(response.status == 200){
-      location.href="listar.html";
+      location.href="../gestion/listar.html";
     }
     if(response.status == 400) (
         alert("Se ha producido un error al ingresar la gestión.")
@@ -282,9 +282,7 @@ function obtenerFechaHora(){
     minute:'2-digit',
     second:'2-digit'
   }).replace(/(\d+)\/(\d+)\/(\d+)\,\s*(\d+):(\d+):(\d+)/,'$3-$2-$1 $4:$5:$6');
-  // alert(fechaActual);
-  // //Formatear la fecha a YYYY-mm-dd hh-ii:ss
-  // return fechaFormateada;
+  return fechaFormateada;
 
 }
 

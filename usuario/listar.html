@@ -38,7 +38,26 @@
         <div class="container">
             <h1>Lista de usuarios</h1>
             <hr>
-            <a 
+            <a href="../usuario/crear.html" class="btn btn-primary">Nuevo usuario</a>
+
+            <div class="card">
+                <div class="card-header">Lista de datos de usuario</div>
+                <div class="card-body" style="overflow-x:scroll">
+                    <table class="display" id="tbl-gestion">
+                        <thead>
+                            <th>Rut</th>
+                            <th>DV</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                            <th>Celular</th>
+                            <th>Fecha</th>
+                            <th>Opciones</th>
+                        </thead>
+                        <tbody id="data"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </body>
 </html>
