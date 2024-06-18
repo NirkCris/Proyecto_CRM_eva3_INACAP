@@ -40,43 +40,40 @@
             <hr>
 
             <div class="card">
-                <div class="card-header">Ingreso de una nueva gestión</div>
+                <div class="card-header">Seleccionar datos para una nueva gestión:</div>
                 <div class="card-body">
                     <form>                
                         <div class="mb-3">
-                            <label for="sel_id_usuario" class="form-label">Usuario</label>
-                            <!-- <input type="text" class="form-control" id="txt_id_usuario"> -->
+                            <label for="sel_id_usuario" class="form-label">Usuario:</label>
                             <select id="sel_id_usuario" class="form-select"></select>
                         
                         </div>
                     
                         <div class="mb-3">
-                            <label for="sel_id_cliente" class="form-label">Cliente</label>
-                            <!-- <input type="text" class="form-control" id="txt_id_cliente"> -->
+                            <label for="sel_id_cliente" class="form-label">Cliente:</label>
                             <select id="sel_id_cliente" class="form-select"></select>
                         </div>
                     
                         <div class="mb-3">
-                            <label for="sel_id_tipo_gestion" class="form-label">Tipo de gestión</label>
-                            <!-- <input type="text" class="form-control" id="txt_id_tipo_gestion"> -->
+                            <label for="sel_id_tipo_gestion" class="form-label">Tipo de gestión:</label>
                             <select id="sel_id_tipo_gestion" class="form-select"></select>
 
                         </div>
                     
                         <div class="mb-3">
-                            <label for="sel_id_resultado" class="form-label">Resultado</label>
+                            <label for="sel_id_resultado" class="form-label">Resultado:</label>
                             <select id="sel_id_resultado" class="form-select"></select>
                         
                         </div>
                     
                         <div class="mb-3">
-                            <label for="txt_comentarios" class="form-label">Comentarios</label>
+                            <label for="txt_comentarios" class="form-label">Comentarios:</label>
                             <input type="text" class="form-control" id="txt_comentarios" maxlength="200" placeholder="Escribir comentarios aquí..." required>
                             <div id="ayuda_nombre" class="form-text">Ingrese un comentario.</div>
                         </div>
                     
                         <input type="button" value="Agregar gestión" class="btn btn-primary" onclick="agregarGestion();">
-                        <input type="button" value="Cancelar" class="btn btn-danger" onclick="javascript:history.back();">
+                        <input type="button" value="Cancelar" class="btn btn-secondary" onclick="javascript:history.back();">
                     </form>
                 </div>
             </div>
