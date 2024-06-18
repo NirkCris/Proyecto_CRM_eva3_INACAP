@@ -35,9 +35,9 @@ fetch("http://144.126.210.74:8080/api/gestion", requestOptions)
     if(response.status == 200){
       location.href="../gestion/listar.html";
     }
-    if(response.status == 400) (
+    if(response.status == 400){
         alert("Se ha producido un error al ingresar la gestión.")
-    )
+    }
   })
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
