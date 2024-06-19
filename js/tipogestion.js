@@ -21,6 +21,9 @@ function agregarTipoGestion(){
       if(response.status == 200){
         location.href="listar.html";
       }
+      if(response.status == 400){
+        alert("No es posible agregar tipo de gestión")
+      }
     })
     .then((result) => console.log(result))
     .catch((error) => console.error(error));
@@ -136,12 +139,15 @@ function completarFormulario(element,index,arr) {
 function actualizarTipoGestion() {
   //obtenemos el valor de tipo de gestion desde el formulario
   var nombre_tipo_gestion = document.getElementById("txt_nombre_tipo_gestion").value;
+
+  let fechaHoraActual = obtenerFechaHora();
   
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
   const raw = JSON.stringify({
     "nombre_tipo_gestion": nombre_tipo_gestion,
+    "fecha_registro": fechaHoraActual
   });
   
   const requestOptions = {
@@ -155,6 +161,9 @@ function actualizarTipoGestion() {
   .then((response) => {
     if(response.status == 200){
       location.href="listar.html";
+    }
+    if(response.status == 400){
+      alert("No es posible actualizar el tipo de gestión")
     }
   })
   .then((result) => console.log(result))

@@ -10,7 +10,7 @@
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand">CRM</a>
+                <a href="../home/crm.html" class="navbar-brand">CRM</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,27 +46,27 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" for="txt_dv">Ingresar nuevo código verificador del RUT:</label>
-                            <input type="text" class="form-control" id="txt_dv" aria-describedby="dvHelp" maxlength="1">
+                            <input type="text" class="form-control" id="txt_dv" aria-describedby="dvHelp" maxlength="1" required>
                             <div class="form-text" id="dvHelp">El código verificador se reemplazará.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="txt_nombres">Ingresar nuevos nombres del cliente:</label>
-                            <input type="text" class="form-control" id="txt_nombres" aria-describedby="nombresHelp" maxlength="45">
+                            <input type="text" class="form-control" id="txt_nombres" aria-describedby="nombresHelp" maxlength="45" required>
                             <div class="form-text" id="nombresHelp">Se reemplazarán por los nuevos nombres.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="txt_apellidos">Ingresar nuevos apellidos del cliente:</label>
-                            <input type="text" class="form-control" id="txt_apellidos" aria-describedby="apellidosHelp" maxlength="45">
+                            <input type="text" class="form-control" id="txt_apellidos" aria-describedby="apellidosHelp" maxlength="45" required>
                             <div class="form-text" id="apellidosHelp">Se reemplazará por los nuevos apellidos.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="txt_email">Ingresar nuevo email del cliente:</label>
-                            <input type="email" class="form-control" id="txt_email" aria-describedby="emailHelp" maxlength="100" placeholder="ejemplo@solicitud.cl">
+                            <input type="email" class="form-control" id="txt_email" aria-describedby="emailHelp" maxlength="100" placeholder="ejemplo@solicitud.cl" required>
                             <div class="form-text" id="emailHelp">El email se reemplazará por el ingresado</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="txt_celular">Ingresar nuevo celular del cliente:</label>
-                            <input type="number" class="form-control" id="txt_celular" aria-describedby="celularHelp" placeholder="912345678">
+                            <input type="number" class="form-control" id="txt_celular" aria-describedby="celularHelp" placeholder="912345678" required>
                             <div class="form-text" id="celularHelp">El celular se reemplazará por el ingresado.</div>
                         </div>
                         

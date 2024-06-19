@@ -100,7 +100,7 @@ function obtenerDatosActualizar(p_id_cliente){
   .catch((error) => console.error(error));
 }
 
-function completarActualizar(element){
+function completarFormularioActualizar(element){
   let dv = element.dv;
   document.getElementById('txt_dv').value = dv;
   let nombres = element.nombres;
@@ -120,6 +120,8 @@ function actualizarCliente() {
   let apellidos = document.getElementById("txt_apellidos").value;
   let email = document.getElementById("txt_email").value;
   let celular = document.getElementById("txt_celular").value;
+
+  let fechaHoraActual = obtenerFechaHora();
   
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -129,7 +131,8 @@ function actualizarCliente() {
     nombres,
     apellidos,
     email,
-    celular
+    celular,
+    "fecha_registro": fechaHoraActual
   });
   
   const requestOptions = {
@@ -200,16 +203,6 @@ function eliminarCliente(){
   })
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
-}
-
-
-//Sección para cargar y formatear fecha directo del sistema
-function cargarListasDesplegables(){
-  // cargarSelectResultado();
-  // cargarSelectCliente();
-  // cargarSelectUsuario();
-  // cargarSelectTipoGestion();
-  obtenerFechaHora();
 }
 
 function obtenerFechaHora(){

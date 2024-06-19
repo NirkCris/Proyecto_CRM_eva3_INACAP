@@ -10,7 +10,7 @@
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand">CRM</a>
+                <a href="../home/crm.html" class="navbar-brand">CRM</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,42 +41,42 @@
             <hr>
 
             <div class="card">
-                <div class="card-header">Los datos del usuario *ID* serán actualizados:</div>
+                <div class="card-header">Los datos del usuario <label id="txt_id_usuario"></label> serán actualizados:</div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
                             <label for="txt_dv_usuario" class="form-label">Ingresar nuevo dígito verificador del RUT:</label>
-                            <input type="text" class="form-control" id="txt_dv_usuario" aria-describedby="dvHelp" maxlength="1">
+                            <input type="text" class="form-control" id="txt_dv_usuario" aria-describedby="dvHelp" maxlength="1" required>
                             <div class="form-text" id="dvHelp">Es el dígito después del guión de su RUT.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_nombres_usuario" class="form-label">Ingresar nuevos nombres del usuario:</label>
-                            <input type="text" class="form-control" id="txt_nombres_usuario" aria-describedby="nombresHelp" maxlength="45">
+                            <input type="text" class="form-control" id="txt_nombres_usuario" aria-describedby="nombresHelp" maxlength="45" required>
                             <div class="form-text" id="nombresHelp">Nombres por los que desea actualizar.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_apellidos_usuario" class="form-label">Ingresar nuevos apellidos del usuario:</label>
-                            <input type="text" class="form-control" id="txt_apellidos_usuario" aria-describedby="apellidosHelp" maxlength="45">
+                            <input type="text" class="form-control" id="txt_apellidos_usuario" aria-describedby="apellidosHelp" maxlength="45" required>
                             <div class="form-text" id="apellidosHelp">Apellidos por los que desea actualizar.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_email_usuario" class="form-label">Ingresar nuevo email del usuario:</label>
-                            <input type="email" class="form-control" id="txt_email_usuario" aria-describedby="emailHelp" maxlength="45" placeholder="ejemplo@email.cl">
+                            <input type="email" class="form-control" id="txt_email_usuario" aria-describedby="emailHelp" maxlength="45" placeholder="ejemplo@email.cl" required>
                             <div class="form-text" id="emailHelp">Será reemplazado por el que ya existe.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_celular_usuario" class="form-label">Ingresar nuevo número de celular del usuario:</label>
-                            <input type="number" class="form-control" id="txt_celular_usuario" aria-describedby="celularHelp" placeholder="912345678">
+                            <input type="number" class="form-control" id="txt_celular_usuario" aria-describedby="celularHelp" placeholder="912345678" required>
                             <div class="form-text" id="celularHelp">Número de 9 dígitos que desea actualizar.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_username_usuario" class="form-label">Ingresar un nuevo username:</label>
-                            <input type="text" class="form-control" id="txt_username_usuario" aria-describedby="usernameHelp" maxlength="45">
+                            <input type="text" class="form-control" id="txt_username_usuario" aria-describedby="usernameHelp" maxlength="45" required>
                             <div class="form-text" id="usernameHelp">El username será reemplazado.</div>
                         </div>
                         <div class="mb-3">
                             <label for="txt_password_usuario" class="form-label">Ingresar una nueva password:</label>
-                            <input type="password" class="form-control" id="txt_password_usuario" aria-describedby="passwordHelp" maxlength="200">
+                            <input type="password" class="form-control" id="txt_password_usuario" aria-describedby="passwordHelp" maxlength="200" required>
                             <div class="form-text" id="passwordHelp">Se reemplazará el anterior password.</div>
                         </div>
                         

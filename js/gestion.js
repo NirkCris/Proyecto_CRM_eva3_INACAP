@@ -1,36 +1,36 @@
 //Variables globales
-var g_id_tipo_gestion ="";
+var g_id_gestion ="";
 
 function agregarGestion(){
 
-var id_cliente = document.getElementById("sel_id_cliente").value;
-var id_usuario = document.getElementById("sel_id_usuario").value;
-var id_tipo_gestion = document.getElementById("sel_id_tipo_gestion").value;
-var id_resultado = document.getElementById("sel_id_resultado").value;
-var comentarios = document.getElementById("txt_comentarios").value;
+  var id_cliente = document.getElementById("sel_id_cliente").value;
+  var id_usuario = document.getElementById("sel_id_usuario").value;
+  var id_tipo_gestion = document.getElementById("sel_id_tipo_gestion").value;
+  var id_resultado = document.getElementById("sel_id_resultado").value;
+  var comentarios = document.getElementById("txt_comentarios").value;
 
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-var fechaHoraActual = obtenerFechaHora();
+  var fechaHoraActual = obtenerFechaHora();
 
-const raw = JSON.stringify({
-  "id_usuario": id_usuario,
-  "id_cliente": id_cliente,
-  "id_tipo_gestion": id_tipo_gestion,
-  "id_resultado": id_resultado,
-  "comentarios": comentarios,
-  "fecha_registro": fechaHoraActual
-});
+  const raw = JSON.stringify({
+    "id_usuario": id_usuario,
+    "id_cliente": id_cliente,
+    "id_tipo_gestion": id_tipo_gestion,
+    "id_resultado": id_resultado,
+    "comentarios": comentarios,
+    "fecha_registro": fechaHoraActual
+  });
 
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+  };
 
-fetch("http://144.126.210.74:8080/api/gestion", requestOptions)
+  fetch("http://144.126.210.74:8080/api/gestion", requestOptions)
   .then((response) => {
     if(response.status == 200){
       location.href="../gestion/listar.html";
@@ -76,104 +76,136 @@ function completarFila(element,index,arr) {
   <td>${element.comentarios}</td>
   <td>${element.fecha_registro}</td>
   <td>
-  <a href='actualizar.html?id=${element.id_tipo_gestion}' class='btn btn-warning btn-sm'>Actualizar</a>
-  <a href='eliminar.html?id=${element.id_tipo_gestion}' class='btn btn-danger btn-sm'>Eliminar</a>
+  <a href='actualizar.html?id=${element.id_gestion}' class='btn btn-warning btn-sm'>Actualizar</a>
+  <a href='eliminar.html?id=${element.id_gestion}' class='btn btn-danger btn-sm'>Eliminar</a>
   </td>
   </tr>`
 }
+
+//Funciones para ACTUALIZAR gestión
 function obtenerIdActualizar(){
   const queryString = window.location.search;
   const parametros = new URLSearchParams(queryString);
-  const p_id_tipo_gestion = parametros.get('id');
-  g_id_tipo_gestion = p_id_tipo_gestion;
-  obtenerDatosActualizar(p_id_tipo_gestion);
-
+  const p_id_gestion = parametros.get('id');
+  g_id_gestion = p_id_gestion;
+  obtenerDatosActualizar(p_id_gestion);
 }
-function obtenerIdEliminar(){
-  const queryString = window.location.search;
-  const parametros = new URLSearchParams(queryString);
-  const p_id_tipo_gestion = parametros.get('id');
-  g_id_tipo_gestion = p_id_tipo_gestion;
-  obtenerDatosEliminar(p_id_tipo_gestion);
 
-}
-function obtenerDatosEliminar(p_id_tipo_gestion) {
+function obtenerDatosActualizar(p_id_gestion) {
   const requestOptions = {
     method: "GET",
     redirect: "follow"
   };
   
-  fetch("http://144.126.210.74:8080/api/tipo_gestion/"+p_id_tipo_gestion, requestOptions)
-    .then((response) => response.json())
-    .then((json) => json.forEach(completarEtiqueta))
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
+  fetch("http://144.126.210.74:8080/api/gestion/"+p_id_gestion, requestOptions)
+  .then((response) => response.json())
+  //utilizar listas desplegables para actualizar
+  .then((json) => json.forEach(cargarListasDesplegables))
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+}
+
+function completarFormulario(element) {
+  let usuario = element.id_usuario;
+  document.getElementById('sel_id_usuario').value = usuario;
+  let cliente = element.id_cliente;
+  document.getElementById('sel_id_cliente').value = cliente;
+  let nombre_tipo_gestion = element.id_tipo_gestion;
+  document.getElementById('sel_id_tipo_gestion').value = nombre_tipo_gestion;
+  let nombre_resultado = element.id_resultado;
+  document.getElementById('sel_id_resultado').value = nombre_resultado;
 
 }
-function obtenerDatosActualizar(p_id_tipo_gestion) {
+
+function actualizarGestion(){
+  var id_cliente = document.getElementById("sel_id_cliente").value;
+  var id_usuario = document.getElementById("sel_id_usuario").value;
+  var id_tipo_gestion = document.getElementById("sel_id_tipo_gestion").value;
+  var id_resultado = document.getElementById("sel_id_resultado").value;
+  var comentarios = document.getElementById("txt_comentarios").value;
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var fechaHoraActual = obtenerFechaHora();
+
+  const raw = JSON.stringify({
+    "id_usuario": id_usuario,
+    "id_cliente": id_cliente,
+    "id_tipo_gestion": id_tipo_gestion,
+    "id_resultado": id_resultado,
+    "comentarios": comentarios,
+    "fecha_registro": fechaHoraActual
+  });
+
   const requestOptions = {
-    method: "GET",
+    method: "PATCH",
+    headers: myHeaders,
+    body: raw,
     redirect: "follow"
   };
-  
-  fetch("http://144.126.210.74:8080/api/tipo_gestion/"+p_id_tipo_gestion, requestOptions)
-    .then((response) => response.json())
-    .then((json) => json.forEach(completarFormulario))
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
 
-}
-function completarEtiqueta(element,index,arr) {
-  var nombre_tipo_gestion = element.nombre_tipo_gestion;
-  document.getElementById('lbl_eliminar').innerHTML ="¿Desea eliminar este tipo de gestión? <b>"+ nombre_tipo_gestion +"</b>";
-}
-function completarFormulario(element,index,arr) {
-  var nombre_tipo_gestion = element.nombre_tipo_gestion;
-  document.getElementById('txt_nombre_tipo_gestion').value = nombre_tipo_gestion;
-
-}
-function actualizarTipoGestion(){
-  var nombre_tipo_gestion = document.getElementById("txt_nombre_tipo_gestion").value;
-
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-const raw = JSON.stringify({
-  "nombre_tipo_gestion": nombre_tipo_gestion
-});
-
-const requestOptions = {
-  method: "PATCH",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
-
-fetch("http://144.126.210.74:8080/api/tipo_gestion/"+ g_id_tipo_gestion, requestOptions)
+  fetch("http://144.126.210.74:8080/api/gestion/"+ g_id_gestion, requestOptions)
   .then((response) => {
     if(response.status == 200){
-      location.href="listar.html";
+      location.href="../gestion/listar.html";
+    }
+    if(response.status == 400){
+      alert("No se puede actualizar la gestión")
     }
   })
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
 
 }
-function eliminarTipoGestion(){
+
+// funciones para ELIMINAR la gestion
+function obtenerIdEliminar(){
+  const queryString = window.location.search;
+  const parametros = new URLSearchParams(queryString);
+  const p_id_gestion = parametros.get('id');
+  g_id_gestion = p_id_gestion;
+  obtenerDatosEliminar(p_id_gestion);
+
+}
+function obtenerDatosEliminar(p_id_gestion) {
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+  };
+  
+  fetch("http://144.126.210.74:8080/api/gestion/"+p_id_gestion, requestOptions)
+    .then((response) => response.json())
+    .then((json) => json.forEach(completarEtiqueta))
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+
+}
+
+function completarEtiqueta(element) {
+  var id_gestion = element.id_gestion;
+  document.getElementById('lbl_eliminar').innerHTML ="¿Desea eliminar la gestión <b>"+ id_gestion +"</b> para siempre?";
+}
+
+
+function eliminarGestion(){
 
   const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Content-Type", "application/json");
 
-const requestOptions = {
-  method: "DELETE",
-  headers: myHeaders,
-  redirect: "follow"
-};
+  const requestOptions = {
+    method: "DELETE",
+    headers: myHeaders,
+    redirect: "follow"
+  };
 
-fetch("http://144.126.210.74:8080/api/tipo_gestion/"+ g_id_tipo_gestion, requestOptions)
+  fetch("http://144.126.210.74:8080/api/gestion/"+ g_id_gestion, requestOptions)
   .then((response) => {
     if(response.status == 200){
       location.href="listar.html";
+    }
+    if(response.status == 400){
+      alert("No es posible eliminar esta gestión")
     }
   })
   .then((result) => console.log(result))
